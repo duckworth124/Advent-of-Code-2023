@@ -98,8 +98,8 @@ def is_blocked(pos):
 
 
 def bfs():
-    external_points = [[False for i in range(len(puzzle_input[0]) * 3)] for j in range(len(puzzle_input) * 3)]
-    explored_points = [[False for i in range(len(puzzle_input[0]) * 3)] for j in range(len(puzzle_input) * 3)]
+    external_points = [[False for _ in range(len(puzzle_input[0]) * 3)] for _ in range(len(puzzle_input) * 3)]
+    explored_points = [[False for _ in range(len(puzzle_input[0]) * 3)] for _ in range(len(puzzle_input) * 3)]
     frontier = [(0, 0)]
     while frontier:
         current_pos = frontier.pop()
@@ -125,13 +125,13 @@ def get_area(external_points, print_map=False):
             if not ((x, y) in loop or external_points[y * 3][x * 3]):
                 area += 1
                 if print_map:
-                    print('I', end='')
+                    print('0', end='')
             else:
                 if print_map:
                     if (x, y) in loop:
                         print(puzzle_input[y][x], end='')
                     else:
-                        print('O', end='')
+                        print('.', end='')
         if print_map:
             print('')
     return area
