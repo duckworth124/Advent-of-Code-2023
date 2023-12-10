@@ -57,5 +57,4 @@ def is_pointing_to(from_pos, to_pos):
 
 
 loop = create_loop()
-distances = [min(i, len(loop) - i) for i in range(len(loop))]
-print(max(distances))
+print(len(loop) // 2)
