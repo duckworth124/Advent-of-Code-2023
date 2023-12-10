@@ -22,20 +22,17 @@ def get_next(prev_pos, current_pos):
     next_positions = [next_pos for next_pos in [move(current_pos, direction) for direction in DIRECTIONS]
                       if is_pointing_to(current_pos, next_pos)]
     next_positions.remove(prev_pos)
-    if len(next_positions) != 1:
-        raise Exception
     return next_positions[0]
 
 
 def create_loop():
     start = find_start()
     output = {start}
+    next_pos = ()
     for direction in DIRECTIONS:
         next_pos = move(start, direction)
         if is_pointing_to(next_pos, start):
             break
-    else:
-        raise Exception
     current_pos = start
     while next_pos != start:
         output.add(next_pos)
@@ -57,7 +54,6 @@ def is_pointing_to(from_pos, to_pos):
         return pipe_from in ('L', 'F', '-')
     if (change_x, change_y) == (-1, 0):
         return pipe_from in ('J', '-', '7')
-    raise Exception
 
 
 loop = create_loop()
